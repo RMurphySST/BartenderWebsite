@@ -31,11 +31,16 @@ const Home = () => {
     return (
         <div className="home">
             <div className="recipes">
+                <h2>Showing All Recipes: {
+                    recipes ? recipes.length : 0
+                } Total</h2>
                 {/* Check to make sure recipes exist before mapping */}
                 {recipes && recipes.map((recipe) => (
                     <RecipeDetails key={recipe._id} recipe={recipe}/>
 
                 ))}
+                {/* If there are no recipes, display a message */}
+                {/* {!recipes && <div className='error'>No Recipes Found, Check Backend Active</div>} */}
             </div>
             <RecipeForm />
         </div>

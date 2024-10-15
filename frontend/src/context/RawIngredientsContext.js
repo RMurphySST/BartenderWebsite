@@ -7,23 +7,23 @@ export const RawIngredientsContext = createContext()
 export const rawIngredientsReducer = (state, action) => {
     // Check the action type and update the state accordingly
     switch(action.type) {
-        // Add a case to handle the SET_RAW_INGREDIENTS action
-        case 'SET_RAW_INGREDIENTS':
+        // Add a case to handle the SET_RAWINGREDIENTS action
+        case 'SET_RAWINGREDIENTS':
             return {
                 //Returns the rawingredients from the action payload
-                raw_ingredients: action.payload
+                rawingredients: action.payload
             }
-        // Add a case to handle the CREATE_RAW_INGREDIENTS action
-        case 'CREATE_RAW_INGREDIENT':
+        // Add a case to handle the CREATE_RAWINGREDIENTS action
+        case 'CREATE_RAWINGREDIENT':
             return {
                 // Add the new rawingredients to the beginning of the rawingredients array
-                raw_ingredients: [action.payload, ...state.raw_ingredients]
+                rawingredients: [action.payload, ...state.rawingredients]
             }
-        // Add a case to handle the DELETE_RAW_INGREDIENT action
-        case 'DELETE_RAW_INGREDIENT':
+        // Add a case to handle the DELETE_RAWINGREDIENT action
+        case 'DELETE_RAWINGREDIENT':
             return {
                 // Filter out the rawingredients with the matching ID
-                raw_ingredients: state.raw_ingredients.filter(raw_ingredient => raw_ingredient._id !== action.payload)
+                rawingredients: state.rawingredients.filter(rawingredient => rawingredient._id !== action.payload)
             }
         default:
             return state
@@ -35,7 +35,7 @@ export const RawIngredientsContextProvider = ({ children}) => {
 
     // Create a reducer to update the rawingredients data
     const [state, dispatch] = useReducer(rawIngredientsReducer, {
-        raw_ingredients: null,
+        rawingredients: null,
         error: null
     })
 

@@ -32,11 +32,17 @@ header a {
   margin: 0 auto;
 }
 
+.nav
+{
+  display: flex;
+  align-items: center;
+}
+
 /* homepage */
 .home {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  gap: 30px;
+  gap: 40px;
 }
 .recipe-details {
   background: #fff;
@@ -187,5 +193,12 @@ div.success-add
   line-height: 1; /* Adjust line height for better vertical alignment */
   display: flex; /* Make label a flex container */
   align-items: center; /* Center text vertically */
+}
+
+/* Raw Ingredients Page */
+.raw-ingredients {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }
 

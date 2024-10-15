@@ -11,6 +11,12 @@ const RecipeDetails = ({ recipe }) => {
 
     // Function to delete a recipe
     const handleDelete = async () => {
+
+        //Alert the user to confirm the deletion
+        if (!window.confirm('Are you sure you want to delete this recipe?')) {
+            return;
+        }
+        
         //For testing, just set error and return
         // Send a DELETE request to the API
         const response = await fetch(`/api/recipes/${recipe._id}`, {

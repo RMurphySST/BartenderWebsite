@@ -27,17 +27,9 @@ const RawIngredientsPage = () => {
     }, [])
 
     return (
-        <div>Test</div>
-        // <div className="rawIngredientsView">
-        //     <div className="ingredients">
-        //         {/* Check to make sure ingredients exist before mapping */}
-        //         {ingredients && ingredients.map((ingredient) => (
-        //             <RawIngredientDetails key={ingredient._id} ingredient={ingredient}/>
-
-        //         ))}
-        //     </div>
-        //     <RawIngredientForm />
-        // </div>
+        <div class name="rawIngredients">
+            Testing
+        </div>
     )
     }
 
