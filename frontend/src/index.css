@@ -54,6 +54,24 @@ header a {
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
+
+.ingredient-details {
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 20px;
+  /* Make the top and bottom padding smaller */
+  padding: 10px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.recipe-details h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.5em;
+  color: #333;
+}
+
 .recipe-details h4 {
   margin: 0 0 0px 0;
   font-size: 1.2em;

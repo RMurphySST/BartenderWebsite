@@ -8,10 +8,10 @@ import { RawIngredientsContextProvider } from './context/RawIngredientsContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <RawIngredientsContextProvider>
     <RecipeContextProvider>
-      <RawIngredientsContextProvider>
       <App />
-      </RawIngredientsContextProvider>
     </RecipeContextProvider>
+    </RawIngredientsContextProvider>
   </React.StrictMode>
 );

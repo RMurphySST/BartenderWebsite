@@ -9,6 +9,7 @@ export const rawIngredientsReducer = (state, action) => {
     switch(action.type) {
         // Add a case to handle the SET_RAWINGREDIENTS action
         case 'SET_RAWINGREDIENTS':
+            console.log("TEST:", action.payload)
             return {
                 //Returns the rawingredients from the action payload
                 rawingredients: action.payload

@@ -184,16 +184,18 @@ const createCocktailRecipe = async (req, res) => {
 const addRawIngredient = async (req, res) => {
     try
     {
-        const { name } = req.body
+        const { name, abv } = req.body
+        console.log(name, abv)
 
         //Make the name field required
         if (!name)
         {
             return res.status(400).json({error: 'Name is required'})
         }
-
-        //Put the name in title case
-        name = name.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+        if (!abv)
+        {
+            return res.status(400).json({error: 'ABV is required'})
+        }
 
         //Check if the name is not already in use
         const existingRawIngredient = await RawIngredient.findOne({ name })
@@ -203,13 +205,13 @@ const addRawIngredient = async (req, res) => {
             return res.status(400).json({error: 'Ingredient name already exists'})
         }
 
-        const newRawIngredient = await RawIngredient.create({name})
+        const newRawIngredient = await RawIngredient.create({name, abv})
 
         res.status(200).json(newRawIngredient)
     }
     catch (error)
     {
-        res.status(400).json({error: error.message})
+        res.status(401).json({error: error.message})
     }
 }
 
@@ -232,6 +234,32 @@ const deleteCocktailRecipe = async (req, res) => {
         }
 
         res.status(200).json(deletedRecipe)
+    }
+    catch (error)
+    {
+        res.status(400).json({error: error.message})
+    }
+}
+
+//DELETE a raw ingredient by id
+const deleteRawIngredient = async (req, res) => {
+    try
+    {
+        const { id } = req.params
+
+        if (!mongo.ObjectId.isValid(id))
+        {
+            return res.status(404).json({error: 'Invalid id, ingredient not found'})
+        }
+
+        const deletedIngredient = await RawIngredient.findOneAndDelete({_id: id})
+
+        if (!deletedIngredient)
+        {
+            return res.status(404).json({error: 'Ingredient not found'})
+        }
+
+        res.status(200).json(deletedIngredient)
     }
     catch (error)
     {
@@ -273,6 +301,7 @@ module.exports = {
     getAllCocktailRecipes,
     getSingleCocktailRecipe,
     deleteCocktailRecipe,
+    deleteRawIngredient,
     updateCocktailRecipe,
     addRawIngredient,
     getAllRawIngredients,

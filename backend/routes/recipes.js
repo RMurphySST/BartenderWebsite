@@ -4,6 +4,7 @@ const{
     getAllCocktailRecipes,
     getSingleCocktailRecipe,
     deleteCocktailRecipe,
+    deleteRawIngredient,
     updateCocktailRecipe,
     addRawIngredient,
     getAllRawIngredients,
@@ -32,6 +33,9 @@ router.post('/', createCocktailRecipe)
 
 //DELETE a cocktail recipe
 router.delete('/:id', deleteCocktailRecipe)
+
+//DELETE a raw ingredient
+router.delete('/ingredients/:id', deleteRawIngredient)
 
 //PATCH a cocktail recipe
 router.patch('/:id', updateCocktailRecipe)
