@@ -54,7 +54,7 @@ const RecipeDetails = ({ recipe }) => {
             <p><b>Instructions:  </b>{recipe.instructions}</p>
             <p><b>Source:  </b>{recipe.source}</p>
             <div className="delete-recipe-div">
-                <button className="delete-recipe-button" onClick={handleDelete}>Delete</button>
+                <button className="material-symbols-outlined" onClick={handleDelete}>delete</button>
             </div>  
             {error && <div className="error">{error}</div>}
             

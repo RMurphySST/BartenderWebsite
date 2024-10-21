@@ -41,7 +41,7 @@ const RawIngredientDetails = ({ ingredient }) => {
             <h2>{ingredient.name}</h2>
             <p>Est. ABV: {ingredient.abv}%</p>
             <div className="delete-ingredient-div">
-                <button className="delete-ingredient-button" onClick={handleDelete}>Delete</button>
+            <button className="material-symbols-outlined" onClick={handleDelete}>delete</button>
             </div>  
             {error && <div className="error">{error}</div>}
         </div>

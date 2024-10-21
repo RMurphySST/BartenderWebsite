@@ -111,6 +111,15 @@ header a {
 
 }
 
+.delete-ingredient-div {
+  position: absolute; /* Position the delete button */
+  bottom: 20px; /* Align to the bottom */
+  right: 20px; /* Align to the right */
+  border-radius: 25%; /* Make the button round */
+  color: gray; /* Gray color for the button */
+
+}
+
 .delete-recipe-button
 {
   /* Make background light red with red border */
