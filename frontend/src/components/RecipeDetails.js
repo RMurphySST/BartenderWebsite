@@ -50,17 +50,7 @@ const RecipeDetails = ({ recipe }) => {
 
 
     return (
-        <Card
-            style = {{
-                background: "#fff",
-                borderRadius: "4px",
-                margin: "20px auto",
-                padding: "10px",
-                position: "relative",
-                boxShadow: "2px 2px 5px rgba(0,0,0,0.3)"}}
-            sx = {{margin: "5em", padding:"1em"}}
-            variant="outlined"
-        >
+        <Card variant="outlined">
             <span className="date-added">[{new Date(recipe.createdAt).toLocaleDateString()}]</span> {/* Date Added Text */}
             <Typography variant="h3" align="center">{recipe.name}</Typography>
             <Typography variant="caption" align="center" sx={{ display: 'block' }}>
