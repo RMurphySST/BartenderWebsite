@@ -94,7 +94,7 @@ const RecipeDetails = ({ recipe }) => {
             </Grid>
             
             <div className="delete-recipe-div">
-                <button className="delete-recipe-button" onClick={handleDelete}>Delete</button>
+                <button className="material-symbols-outlined" onClick={handleDelete}>delete</button>
             </div>  
             {error && <div className="error">{error}</div>}
             <Typography variant="caption" align="center" sx={{ display: 'block' }}>
