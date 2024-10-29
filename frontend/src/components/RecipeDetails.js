@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import { useRecipesContext } from '../hooks/useRecipesContext';
+import Card from '@mui/material/Card';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Grid from '@mui/material/Grid2';
+
 
 const RecipeDetails = ({ recipe }) => {
 
@@ -42,23 +50,59 @@ const RecipeDetails = ({ recipe }) => {
 
 
     return (
-        <div className="recipe-details">
+        <Card
+            style = {{
+                background: "#fff",
+                borderRadius: "4px",
+                margin: "20px auto",
+                padding: "10px",
+                position: "relative",
+                boxShadow: "2px 2px 5px rgba(0,0,0,0.3)"}}
+            sx = {{margin: "5em", padding:"1em"}}
+            variant="outlined"
+        >
             <span className="date-added">[{new Date(recipe.createdAt).toLocaleDateString()}]</span> {/* Date Added Text */}
-            <h2>{recipe.name}</h2>
-            <ul>
-                {recipe.ingredients.map((ingredient, index) => (
-                    <li key={index}>{ingredient.name} - {ingredient.amount} {ingredient.unit} {ingredient.optional ? '(optional)' : ''}</li>
-                ))}
-            </ul>
-            <p><b>Directions:  </b>{recipe.description}</p>
-            <p><b>Instructions:  </b>{recipe.instructions}</p>
-            <p><b>Source:  </b>{recipe.source}</p>
+            <Typography variant="h3" align="center">{recipe.name}</Typography>
+            <Typography variant="caption" align="center" sx={{ display: 'block' }}>
+            {recipe.description}
+            </Typography>
+            <Divider />
+            <Grid container spacing={2} columns={16}>
+                <Grid size={8}>
+                    <Typography variant="h6">
+                        Ingredients
+                    </Typography>
+                    <List sx={{ padding: 0}}>
+                    {recipe.ingredients.map((ingredient, index) => (
+                        <ListItem key={index} sx={{ p: 0, ml: 2}} >
+                            <ListItemText
+                            sx={{mt:0}}
+                            primary={ingredient.name}
+                            secondary={`${ingredient.amount} ${ingredient.unit} ${ingredient.optional ? "(optional)" : ""}`}
+                            />
+                    </ListItem>
+                    ))}
+                </List></Grid>
+                <Grid size={8}>
+                    <Typography variant="h6">
+                        Instructions
+                    </Typography>
+                    <Typography variant="body1">
+                        {recipe.instructions}
+                    </Typography>
+                </Grid>
+            </Grid>
+            
             <div className="delete-recipe-div">
                 <button className="delete-recipe-button" onClick={handleDelete}>Delete</button>
             </div>  
             {error && <div className="error">{error}</div>}
+            <Typography variant="caption" align="center" sx={{ display: 'block' }}>
+                Source: {recipe.source}
+            </Typography>
             
-        </div>
+        {/* </div> */}
+        </Card>
     )
 }
 
