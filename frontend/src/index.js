@@ -4,14 +4,17 @@ import './index.css';
 import App from './App';
 import { RecipeContextProvider } from './context/RecipeContext';
 import { RawIngredientsContextProvider } from './context/RawIngredientsContext';
+import { AuthContextProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RawIngredientsContextProvider>
-    <RecipeContextProvider>
-      <App />
-    </RecipeContextProvider>
-    </RawIngredientsContextProvider>
+    <AuthContextProvider>
+      <RawIngredientsContextProvider>
+        <RecipeContextProvider>
+          <App />
+        </RecipeContextProvider>
+      </RawIngredientsContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
